@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+    has_many :done_questions
+  has_many :questions, through: :done_questions
   # nameの長さが最小値が5　つまり5文字以上の長さが必要
   validates :name, length: { minimum: 5 }
   # heightは0より大きい値でなければならない

@@ -8,6 +8,8 @@ class Item < ApplicationRecord
   after_save :after_save_message
 
   around_update :around_update_message
+  
+  has_many :pictures,as: :imageable
 
 
   private

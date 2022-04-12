@@ -10,7 +10,10 @@ Rails.application.routes.draw do
   # 外部URIに表示される名前と内部で実際に使用するコントローラー名を異なるものとして見せることができる
   # resources :users,controller: :customers
   # URI側の表示を変えることができる。コントローラー名はそのままなのでcontrollerオプションの逆の作用
-  resources :users,path: :customers
+  # resources :users,path: :customers
+  # リソースフルパスにおける、デフォルトのnew、editなどのパス構成名を変更できる
+  # ただし、対応するアクションを変えるわけではない。パス名のみの変更
+  resources :users, path_names: { new: 'first', edit:'change' }
 
   get 'greetings/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

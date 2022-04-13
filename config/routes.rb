@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   # ただし、対応するアクションを変えるわけではない。パス名のみの変更
   # resources :users, path_names: { new: 'first', edit:'change' }
   # リソースフルルートの7つのアクションルートのうち指定したアクションのみを生成
-  resources :users, only: [:index]
+  # resources :users, only: [:index]
+  # リソースフルルートのうち、指定したアクションのルートを除外する
+  resources :users, except: [:index,:new,:create]
 
   get 'greetings/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

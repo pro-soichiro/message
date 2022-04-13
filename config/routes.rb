@@ -19,7 +19,10 @@ Rails.application.routes.draw do
   # リソースフルルートのうち、指定したアクションのルートを除外する
   # resources :users, except: [:index,:new,:create]
   # URIの特定の拡張子で識別されるフォーマットパラメーターの指示について必須・無効を指定する
-  resources :users, format: false
+  # resources :users, format: false
+  # パラメーターの内容を制限する。エラー時にはActionController::UrlGenerationError例外を発生させる。
+  # 正規表現「/[1-9]/」を使用し、idパラメーターの値を1~9の値に制限する例
+  resources :users,constraints: {id: /[1-9]/}
 
   get 'greetings/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

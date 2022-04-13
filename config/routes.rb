@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   # resources :users,path: :customers
   # リソースフルパスにおける、デフォルトのnew、editなどのパス構成名を変更できる
   # ただし、対応するアクションを変えるわけではない。パス名のみの変更
-  resources :users, path_names: { new: 'first', edit:'change' }
+  # resources :users, path_names: { new: 'first', edit:'change' }
+  # リソースフルルートの7つのアクションルートのうち指定したアクションのみを生成
+  resources :users, only: [:index]
 
   get 'greetings/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

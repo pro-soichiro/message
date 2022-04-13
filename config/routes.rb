@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   # リソースフルルートの7つのアクションルートのうち指定したアクションのみを生成
   # resources :users, only: [:index]
   # リソースフルルートのうち、指定したアクションのルートを除外する
-  resources :users, except: [:index,:new,:create]
+  # resources :users, except: [:index,:new,:create]
+  # URIの特定の拡張子で識別されるフォーマットパラメーターの指示について必須・無効を指定する
+  resources :users, format: false
 
   get 'greetings/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

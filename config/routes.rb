@@ -22,7 +22,12 @@ Rails.application.routes.draw do
   # resources :users, format: false
   # パラメーターの内容を制限する。エラー時にはActionController::UrlGenerationError例外を発生させる。
   # 正規表現「/[1-9]/」を使用し、idパラメーターの値を1~9の値に制限する例
-  resources :users,constraints: {id: /[1-9]/}
+  # resources :users,constraints: {id: /[1-9]/}
+  # 検索機能（コレクションルート）とダウンロード機能（メンバールート）をonオプションを使用し実装する。
+  resources :users do
+    get :search, on: :collection
+    get :download, on: :member
+  end
 
   get 'greetings/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

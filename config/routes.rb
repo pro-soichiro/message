@@ -24,9 +24,13 @@ Rails.application.routes.draw do
   # 正規表現「/[1-9]/」を使用し、idパラメーターの値を1~9の値に制限する例
   # resources :users,constraints: {id: /[1-9]/}
   # 検索機能（コレクションルート）とダウンロード機能（メンバールート）をonオプションを使用し実装する。
+  # resources :users do
+  #   get :search, on: :collection
+  #   get :download, on: :member
+  # end
+    # Userモデルに対する子モデルHobby（趣味）の入れ子関係のルート設定
   resources :users do
-    get :search, on: :collection
-    get :download, on: :member
+    resources :hobbies
   end
 
   get 'greetings/index'

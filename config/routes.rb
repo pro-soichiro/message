@@ -37,10 +37,20 @@ Rails.application.routes.draw do
   # resources :users, shallow: true do
   #   resources :hobbies
   # end
-  #
-  resources :users do
-    resources :hobbies, shallow: true, shallow_path: 'people', shallow_prefix: 'person'
+  # shallow_pathオプションで子モデルのメンバールートのURIの前に任意の名前を付けられる
+  # shallow_prefixオプションで子モデルのメンバールートのprefixの前に任意の名前をつけられる
+  # resources :users do
+  #   resources :hobbies, shallow: true, shallow_path: 'people', shallow_prefix: 'person'
+  # end
+
+  # concernとconcernsを使ってbooksとusersモデルのsearchアクションを共通化する
+  concern :searchable do
+    get 'search',on: :collection
   end
+
+  resources :users, concerns: :searchable
+  resources :books, concerns: :searchable
+
 
 
   get 'greetings/index'

@@ -34,9 +34,14 @@ Rails.application.routes.draw do
   # end
   # Userモデルとその子モデルHobby(趣味)モデルのshallow(浅いルート)の設定方法
   # 子モデルのidのみで特定可能にする
-  resources :users, shallow: true do
-    resources :hobbies
+  # resources :users, shallow: true do
+  #   resources :hobbies
+  # end
+  #
+  resources :users do
+    resources :hobbies, shallow: true, shallow_path: 'people', shallow_prefix: 'person'
   end
+
 
   get 'greetings/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

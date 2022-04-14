@@ -44,12 +44,20 @@ Rails.application.routes.draw do
   # end
 
   # concernとconcernsを使ってbooksとusersモデルのsearchアクションを共通化する
-  concern :searchable do
-    get 'search',on: :collection
+  # concern :searchable do
+  #   get 'search',on: :collection
+  # end
+
+  # resources :users, concerns: :searchable
+  # resources :books, concerns: :searchable
+
+  # concernとconcernsを使ってBookとUserモデルで共通して持っている子モデルであるRentalモデルの入れ子構造を共通化する
+  concern :rentalable do
+    resources :rentals
   end
 
-  resources :users, concerns: :searchable
-  resources :books, concerns: :searchable
+  resources :users, concerns: :rentalable
+  resources :books, concerns: :rentalable
 
 
 

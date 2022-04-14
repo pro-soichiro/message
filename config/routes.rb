@@ -28,8 +28,13 @@ Rails.application.routes.draw do
   #   get :search, on: :collection
   #   get :download, on: :member
   # end
-    # Userモデルに対する子モデルHobby（趣味）の入れ子関係のルート設定
-  resources :users do
+  # Userモデルに対する子モデルHobby（趣味）の入れ子関係のルート設定
+  # resources :users do
+  #   resources :hobbies
+  # end
+  # Userモデルとその子モデルHobby(趣味)モデルのshallow(浅いルート)の設定方法
+  # 子モデルのidのみで特定可能にする
+  resources :users, shallow: true do
     resources :hobbies
   end
 

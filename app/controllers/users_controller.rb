@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
   before_action {puts "HTTPメソッド#{request.method}"}
+  before_action {puts "クライアントの端末情報#{request.headers['User-Agent']}"}
   before_action {puts "HTTPリクエスト#{request.headers}"}
   before_action {puts "HTTPレスポンス#{response.headers}"}
 

@@ -1,0 +1,17 @@
+<%= form_with(model: product, id:"product_form") do |form| %>
+  
+  <div class="field">
+    <%= form.label :名称 %>
+    <%= form.text_field :name, id: :priduct_name %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :価格 %>
+    <%= form.number_field :price, id: :product_price %>
+  </div>
+  
+  <div class="actions">
+    <%= form.submit '登録' %>
+  </div>
+
+<% end %>
